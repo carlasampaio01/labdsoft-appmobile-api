@@ -1,0 +1,6 @@
+{
+  "name": "gorgeous-food-app",
+  "description": "Gorgeous Food API used for ARQSOFT class in ISEP",
+  "image": "heroku/nodejs",
+  "addons": []
+}

@@ -1,0 +1,52 @@
+{
+    "name": "appmobile-api",
+    "version": "1.0.0",
+    "description": "App Mobile API",
+    "scripts": {
+        "build": "tsc",
+        "watch": "tsc -w",
+        "serve-debug": "nodemon --inspect=0.0.0.0:9229 dist/server.js",
+        "dev": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"yarn watch\" \"yarn serve-debug\"",
+        "start": "nodemon ./src/server.ts",
+        "prod": "npm run build && npm run start",
+        "publish": " heroku container:push web && heroku container:release web"
+    },
+    "author": "ISEP",
+    "license": "ISC",
+    "dependencies": {
+        "@sendgrid/mail": "^6.4.0",
+        "axios": "^0.19.0",
+        "bcrypt-nodejs": "^0.0.3",
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "express-swagger-generator": "^1.1.15",
+        "express-validation": "^1.0.3",
+        "express-validator": "^6.2.0",
+        "gridfs-stream": "^1.1.1",
+        "jwt-decode": "^2.2.0",
+        "jwt-simple": "^0.5.6",
+        "mongoose": "^5.7.10",
+        "mongoose-delete": "^0.5.1",
+        "mongoose-gridfs": "^1.2.13",
+        "mongoose-intl": "^3.1.1",
+        "multer": "^1.4.2",
+        "node-pushnotifications": "^1.2.0",
+        "nodemon": "^1.19.4",
+        "passport": "^0.4.0",
+        "passport-jwt": "^4.0.0"
+    },
+    "devDependencies": {
+        "@types/multer": "^1.3.10",
+        "@types/node": "^12.12.5",
+        "@types/node-pushnotifications": "^1.0.3",
+        "@types/passport": "^1.0.1",
+        "@types/passport-jwt": "^3.0.2",
+        "@types/request": "^2.48.3",
+        "node-sass": "^4.13.0",
+        "ts-node": "^8.4.1",
+        "tslint": "^6.0.0-beta0",
+        "typescript": "^3.6.4"
+    }
+}
