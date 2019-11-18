@@ -1,4 +1,4 @@
-import { check } from 'express-validator/check'
+import { check } from 'express-validator'
 import ValidateFields from '../../infra/middleware/validation.middleware'
 
 const validations = {
