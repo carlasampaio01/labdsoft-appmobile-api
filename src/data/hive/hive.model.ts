@@ -22,6 +22,11 @@ export const HiveModel = new mongoose.Schema(
                 ref: 'equipments_without_identification',
             },
         ],
+        company: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'companies',
+            required: true,
+        },
     },
     {
         timestamps: true,

@@ -3,22 +3,12 @@ import { Languages, Default } from '../../infra/extensions/languages.extensions'
 import * as mongooseIntl from 'mongoose-intl'
 import * as mongoose_delete from 'mongoose-delete'
 
-export const EquipmentWithoutIdentificationModel = new mongoose.Schema(
+export const CompanyModel = new mongoose.Schema(
     {
         description: {
             type: String,
             required: 'Enter the description',
             intl: true,
-        },
-        quantity: {
-            type: Number,
-            required: 'Enter the quantity',
-            min: 1,
-        },
-        company: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'companies',
-            required: true,
         },
     },
     {
@@ -28,18 +18,15 @@ export const EquipmentWithoutIdentificationModel = new mongoose.Schema(
     }
 )
 
-EquipmentWithoutIdentificationModel.plugin(mongoose_delete, {
+CompanyModel.plugin(mongoose_delete, {
     deletedAt: true,
     deletedBy: true,
     overrideMethods: true,
 })
-EquipmentWithoutIdentificationModel.plugin(mongooseIntl, {
+CompanyModel.plugin(mongooseIntl, {
     languages: Languages,
     defaultLanguage: Default,
     virtualObject: true,
 })
 
-export const EquipmentWithoutIdentification = mongoose.model(
-    'equipments_without_identification',
-    EquipmentWithoutIdentificationModel
-)
+export const Company = mongoose.model('companies', CompanyModel)

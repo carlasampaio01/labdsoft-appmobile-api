@@ -44,6 +44,13 @@ export const UserModel = new mongoose.Schema(
             ref: 'roles',
             required: true,
         },
+        companies: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'companies',
+                required: true,
+            },
+        ],
     },
     {
         timestamps: true,

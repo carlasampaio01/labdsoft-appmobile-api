@@ -14,6 +14,11 @@ export const EquipmentWithIdentificationModel = new mongoose.Schema(
             type: String,
             unique: true,
         },
+        company: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'companies',
+            required: true,
+        },
     },
     {
         timestamps: true,

@@ -24,6 +24,11 @@ export const TaskModel = new mongoose.Schema(
             type: Boolean,
             default: false,
         },
+        company: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'companies',
+            required: true,
+        },
     },
     {
         timestamps: true,

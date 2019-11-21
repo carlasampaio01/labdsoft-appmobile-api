@@ -27,6 +27,11 @@ export const ApiaryModel = new mongoose.Schema(
                 required: 'Enter the hives',
             },
         ],
+        company: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'companies',
+            required: true,
+        },
     },
     {
         timestamps: true,

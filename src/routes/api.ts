@@ -4,6 +4,7 @@ import AuthRoutes from './../data/auth/auth.routes'
 import InfoRoutes from './../data/info/info.routes'
 
 import TaskRoutes from './../data/task/task.routes'
+import CompanyRoutes from './../data/company/company.routes'
 import TaskTypesRoutes from './../data/task_type/task_type.routes'
 import CalendarRoutes from './../data/calendar/calendar.routes'
 import EquipmentsWithIdentificationRoutes from '../data/equipment_with_identification/equipment_with_identification.routes'
@@ -17,7 +18,7 @@ router.use('/info', InfoRoutes)
 router.use('/auth', AuthRoutes)
 
 router.use('/roles', RolesRoutes)
-
+router.use('/companies', CompanyRoutes)
 router.use('/tasks', TaskRoutes)
 router.use('/task_types', TaskTypesRoutes)
 router.use('/calendars', CalendarRoutes)

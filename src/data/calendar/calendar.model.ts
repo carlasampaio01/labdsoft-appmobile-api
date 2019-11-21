@@ -17,6 +17,11 @@ export const CalendarModel = new mongoose.Schema(
                 required: 'Enter the tasks.',
             },
         ],
+        company: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'companies',
+            required: true,
+        },
     },
     {
         timestamps: true,
