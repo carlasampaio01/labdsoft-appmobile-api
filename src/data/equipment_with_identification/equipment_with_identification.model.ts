@@ -12,7 +12,6 @@ export const EquipmentWithIdentificationModel = new mongoose.Schema(
         },
         identifier: {
             type: String,
-            unique: true,
         },
         company: {
             type: mongoose.Schema.Types.ObjectId,
