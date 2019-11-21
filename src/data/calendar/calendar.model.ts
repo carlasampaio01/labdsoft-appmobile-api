@@ -14,7 +14,6 @@ export const CalendarModel = new mongoose.Schema(
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'tasks',
-                required: 'Enter the tasks.',
             },
         ],
         company: {

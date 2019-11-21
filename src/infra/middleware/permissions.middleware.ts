@@ -45,3 +45,17 @@ export const isManager = () => (
         )
     }
 }
+
+export const ownsCompany = () => (
+    request: IRequest,
+    response: IResponse,
+    next: Function
+) => {
+    if (request.user.companies.includes(request.body.company)) {
+        return next()
+    } else {
+        return response.error(
+            'This user doesnt has permissions to the selected company.'
+        )
+    }
+}

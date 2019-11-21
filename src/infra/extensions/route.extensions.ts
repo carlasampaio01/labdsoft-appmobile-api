@@ -4,6 +4,7 @@ import {
     isAdmin,
     isManager,
     isOperator,
+    ownsCompany,
 } from '../middleware/permissions.middleware'
 
 const UndefinedRoute = (request: any, response: any) => {
@@ -40,6 +41,7 @@ export const RouteMakerAdmin = (
         '/',
         Authenticated(),
         isAdmin(),
+        ownsCompany(),
         validations && validations.create ? validations.create : [],
         controller.create || UndefinedRoute
     )
@@ -47,6 +49,7 @@ export const RouteMakerAdmin = (
         '/:id',
         Authenticated(),
         isAdmin(),
+        ownsCompany(),
         validations && validations.edit ? validations.edit : [],
         controller.edit || UndefinedRoute
     )
@@ -54,6 +57,7 @@ export const RouteMakerAdmin = (
         '/:id',
         Authenticated(),
         isAdmin(),
+        ownsCompany(),
         validations && validations.remove ? validations.remove : [],
         controller.remove || UndefinedRoute
     )
@@ -61,6 +65,7 @@ export const RouteMakerAdmin = (
         '/:id/recover',
         Authenticated(),
         isAdmin(),
+        ownsCompany(),
         validations && validations.recover ? validations.recover : [],
         controller.recover || UndefinedRoute
     )
@@ -93,6 +98,7 @@ export const RouteMakerTask = (
         '/',
         Authenticated(),
         isManager(),
+        ownsCompany(),
         validations && validations.create ? validations.create : [],
         controller.create || UndefinedRoute
     )
@@ -100,12 +106,14 @@ export const RouteMakerTask = (
         '/:id',
         Authenticated(),
         isOperator(),
+        ownsCompany(),
         validations && validations.edit ? validations.edit : [],
         controller.edit || UndefinedRoute
     )
     router.delete(
         '/:id',
         Authenticated(),
+        ownsCompany(),
         validations && validations.remove ? validations.remove : [],
         controller.remove || UndefinedRoute
     )
@@ -133,24 +141,28 @@ const RouteMaker = (router: Router, controller: any, validations?: any) => {
     router.post(
         '/',
         Authenticated(),
+        ownsCompany(),
         validations && validations.create ? validations.create : [],
         controller.create || UndefinedRoute
     )
     router.put(
         '/:id',
         Authenticated(),
+        ownsCompany(),
         validations && validations.edit ? validations.edit : [],
         controller.edit || UndefinedRoute
     )
     router.delete(
         '/:id',
         Authenticated(),
+        ownsCompany(),
         validations && validations.remove ? validations.remove : [],
         controller.remove || UndefinedRoute
     )
     router.put(
         '/:id/recover',
         Authenticated(),
+        ownsCompany(),
         validations && validations.recover ? validations.recover : [],
         controller.recover || UndefinedRoute
     )
