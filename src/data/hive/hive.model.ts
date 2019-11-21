@@ -5,11 +5,23 @@ import * as mongoose_delete from 'mongoose-delete'
 
 export const HiveModel = new mongoose.Schema(
     {
-        description: {
-            type: String,
-            required: 'Enter the description',
-            intl: true,
+        nest: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'equipments_with_identification',
+            required: true,
         },
+        equipments_with_identification: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'equipments_with_identification',
+            },
+        ],
+        equipments_without_identification: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'equipments_without_identification',
+            },
+        ],
     },
     {
         timestamps: true,
