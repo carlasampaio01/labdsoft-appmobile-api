@@ -4,6 +4,7 @@ import AuthRoutes from './../data/auth/auth.routes'
 import InfoRoutes from './../data/info/info.routes'
 
 import TaskRoutes from './../data/task/task.routes'
+import ApiaryRoutes from './../data/apiary/apiary.routes'
 import CompanyRoutes from './../data/company/company.routes'
 import TaskTypesRoutes from './../data/task_type/task_type.routes'
 import CalendarRoutes from './../data/calendar/calendar.routes'
@@ -16,7 +17,7 @@ const router = Router()
 
 router.use('/info', InfoRoutes)
 router.use('/auth', AuthRoutes)
-
+router.use('/apiaries', ApiaryRoutes)
 router.use('/roles', RolesRoutes)
 router.use('/companies', CompanyRoutes)
 router.use('/tasks', TaskRoutes)

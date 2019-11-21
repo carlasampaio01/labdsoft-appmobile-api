@@ -7,4 +7,8 @@ export default class ApiaryService extends BaseService {
     constructor() {
         super(new ApiaryRepository())
     }
+
+    nearest = async (id: string) => {
+        return 'none'
+    }
 }

@@ -1,11 +1,14 @@
 import { Router } from 'express'
 import ApiaryController from './apiary.controller'
-import RouteMaker from '../../infra/extensions/route.extensions'
+import { RouteMakerApiary } from '../../infra/extensions/route.extensions'
 import Validations from './apiary.validations'
+import Authenticated from '../../infra/middleware/auth.middleware'
 
 const router = Router()
 const controller = new ApiaryController()
 
-RouteMaker(router, controller, Validations)
+RouteMakerApiary(router, controller, Validations)
+
+router.get('/nearest', Authenticated(), controller.nearest)
 
 export default router
