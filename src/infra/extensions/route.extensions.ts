@@ -122,6 +122,13 @@ export const RouteMakerUser = (
         validations && validations.recover ? validations.recover : [],
         controller.recover || UndefinedRoute
     )
+    router.get(
+        '/:page/:limit',
+        Authenticated(),
+        isAdmin(),
+        validations && validations.paginate ? validations.paginate : [],
+        controller.paginate || UndefinedRoute
+    )
 }
 
 
