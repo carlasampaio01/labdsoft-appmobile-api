@@ -2,6 +2,8 @@ import { IResponse, IRequest } from '../../interfaces/custom-express';
 import * as mongoose from 'mongoose';
 import BaseController from '../../infra/extensions/controller.extensions';
 import UserService from './user.service';
+import UserRepository from './user.repository';
+import { User } from './user.model';
 
 export default class UserController extends BaseController {
   constructor() {
@@ -37,8 +39,23 @@ export default class UserController extends BaseController {
   }
 
   paginate = async (request: IRequest, response: IResponse) => {
-    return await this._service.paginate(request);
-  };
+    try {
+        const options = {
+            page: request.params.page,
+            limit: request.params.limit,
+        }
+
+        const query = request.query.filter
+            ? JSON.parse(request.query.filter)
+            : {}
+
+        const userRepo = new UserRepository();
+        const result = await userRepo.paginate(query, options, false)
+        return response.success(result)
+    } catch (error) {
+        return response.error(error.message)
+    }
+}
 
   public search = async (request: IRequest, response: IResponse) => {
     return await this._service.paginate(request);
