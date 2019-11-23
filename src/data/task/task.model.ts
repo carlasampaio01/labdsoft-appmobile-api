@@ -10,6 +10,7 @@ export const TaskModel = new mongoose.Schema(
             required: 'Enter the description',
             intl: true,
         },
+        date: { type: Date, default: Date.now },
         type: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'task_types',

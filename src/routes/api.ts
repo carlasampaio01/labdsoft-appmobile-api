@@ -7,7 +7,6 @@ import TaskRoutes from './../data/task/task.routes'
 import ApiaryRoutes from './../data/apiary/apiary.routes'
 import CompanyRoutes from './../data/company/company.routes'
 import TaskTypesRoutes from './../data/task_type/task_type.routes'
-import CalendarRoutes from './../data/calendar/calendar.routes'
 import EquipmentsWithIdentificationRoutes from '../data/equipment_with_identification/equipment_with_identification.routes'
 import EquipmentsWithoutIdentificationRoutes from '../data/equipment_without_identification/equipment_without_identification.routes'
 
@@ -22,7 +21,6 @@ router.use('/roles', RolesRoutes)
 router.use('/companies', CompanyRoutes)
 router.use('/tasks', TaskRoutes)
 router.use('/task_types', TaskTypesRoutes)
-router.use('/calendars', CalendarRoutes)
 router.use(
     '/equipments_with_identification',
     EquipmentsWithIdentificationRoutes
