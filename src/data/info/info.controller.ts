@@ -15,7 +15,7 @@ export default class InfoController {
           ? await this.userRepository.getFullUser(request.user)
           : undefined
       };
-
+      result.languages= ['en'];
       return response.success(result);
     } catch (error) {
       return response.error(error.message);
