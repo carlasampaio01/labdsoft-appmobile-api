@@ -18,6 +18,24 @@ export default class UserController extends BaseController {
     return await this._service.newUser(request.body);
   };
 
+  find = async (request: IRequest, response: IResponse) => {
+    try {
+        const result = await this._service.find()
+        return response.success(result )
+    } catch (error) {
+        return response.error(error.message)
+    }
+  
+  }
+  get = async (request: IRequest, response: IResponse) => {
+    try {
+        const result = await this._service.findById(request.params.id)
+        return response.success(result)
+    } catch (error) {
+        return response.error('Not found')
+    }
+  }
+
   paginate = async (request: IRequest, response: IResponse) => {
     return await this._service.paginate(request);
   };
