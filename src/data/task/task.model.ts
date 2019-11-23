@@ -16,11 +16,11 @@ export const TaskModel = new mongoose.Schema(
             ref: 'task_types',
             required: true,
         },
-        apiaries: {
+        apiaries: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'apiaries',
             required: true,
-        },
+        }],
         completed: {
             type: Boolean,
             default: false,

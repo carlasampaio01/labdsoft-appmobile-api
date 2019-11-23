@@ -10,6 +10,11 @@ export const TaskTypeModel = new mongoose.Schema(
             required: 'Enter the description',
             intl: true,
         },
+        company: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'companies',
+            required: true,
+        },
     },
     {
         timestamps: true,

@@ -24,6 +24,9 @@ export default abstract class BaseController {
         try {
             const result = await this._service.find()
 
+            console.log(result);
+            console.log(request.user.companies)
+
             return response.success(
                 result.filter(record =>
                     request.user.companies.includes(record.company)
