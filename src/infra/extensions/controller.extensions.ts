@@ -10,11 +10,7 @@ export default abstract class BaseController {
     get = async (request: IRequest, response: IResponse) => {
         try {
             const result = await this._service.findById(request.params.id)
-            return response.success(
-                result.filter(record =>
-                    request.user.companies.includes(record.company)
-                )
-            )
+            return response.success(result)
         } catch (error) {
             return response.error('Not found')
         }
@@ -23,10 +19,7 @@ export default abstract class BaseController {
     find = async (request: IRequest, response: IResponse) => {
         try {
             const result = await this._service.find()
-
-            console.log(result);
-            console.log(request.user.companies)
-
+           
             return response.success(
                 result.filter(record =>
                     request.user.companies.includes(record.company)
