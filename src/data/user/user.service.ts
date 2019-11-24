@@ -22,15 +22,6 @@ export default class UserService extends BaseService {
         }
     }
 
-    create = async (request: IRequest, response: IResponse) => {
-        try {
-            const result = await this._repository.newUser(request.body)
-            return response.success(result)
-        } catch (error) {
-            return response.error(error.message, 400, error.errors)
-        }
-    }
-
     paginate = async (request: IRequest, response: IResponse) => {
         try {
             const user = request.user

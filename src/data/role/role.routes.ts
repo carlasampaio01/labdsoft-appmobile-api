@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import RoleController from './role.controller'
-import { RouteMakerAdmin } from '../../infra/extensions/route.extensions'
+import { RouteMakerRole } from '../../infra/extensions/route.extensions'
 import Validations from './role.validations'
 
 const router = Router()
@@ -14,6 +14,7 @@ const controller = new RoleController()
  * @returns {Error}  default - Unexpected error
  */
 
-RouteMakerAdmin(router, controller, Validations)
+
+RouteMakerRole(router, controller, Validations)
 
 export default router

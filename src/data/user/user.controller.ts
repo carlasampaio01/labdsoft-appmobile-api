@@ -16,9 +16,6 @@ export default class UserController extends BaseController {
       );
   };
 
-  create = async (request: IRequest, response: IResponse) => {
-    return await this._service.newUser(request.body);
-  };
 
   find = async (request: IRequest, response: IResponse) => {
     try {
