@@ -9,6 +9,4 @@ const controller = new ApiaryController()
 
 RouteMakerApiary(router, controller, Validations)
 
-router.get('/nearest', Authenticated(), controller.nearest)
-
 export default router

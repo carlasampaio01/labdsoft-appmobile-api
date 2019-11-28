@@ -6,13 +6,4 @@ export default class ApiaryController extends BaseController {
     constructor() {
         super(new ApiaryService())
     }
-
-    nearest = async (request: IRequest, response: IResponse) => {
-        try {
-            const result = await this._service.nearest()
-            return response.success(result)
-        } catch (error) {
-            return response.error('Not found')
-        }
-    }
 }

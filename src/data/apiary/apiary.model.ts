@@ -20,6 +20,9 @@ export const ApiaryModel = new mongoose.Schema(
                 required: 'Enter the longitude',
             },
         },
+        address: {
+            type: String,
+        },
         hives: [
             {
                 type: mongoose.Schema.Types.ObjectId,
