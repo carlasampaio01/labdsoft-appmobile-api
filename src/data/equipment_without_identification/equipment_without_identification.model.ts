@@ -7,8 +7,8 @@ export const EquipmentWithoutIdentificationModel = new mongoose.Schema(
     {
         description: {
             type: String,
-            required: 'Enter the description',
-            intl: true,
+            enum: ['ALIMENTADOR', 'CAPTA-POLÉN', 'FUMIGADOR'],
+            default: 'APICULTOR',
         },
         quantity: {
             type: Number,

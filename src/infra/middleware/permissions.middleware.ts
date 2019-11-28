@@ -6,7 +6,7 @@ export const isAdmin = () => (
     response: IResponse,
     next: Function
 ) => {
-    if (request.user.role.description == 'admin') {
+    if (request.user.role.includes('ADMIN')) {
         return next()
     } else {
         return response.error('Needs admin permission to do this operation.')
@@ -52,18 +52,16 @@ export const ownsCompany = () => (
     response: IResponse,
     next: Function
 ) => {
-
-    if(request.body.companies !== undefined){
-        let contains = false;
-          request.user.companies.forEach(element => {
+    if (request.body.companies !== undefined) {
+        let contains = false
+        request.user.companies.forEach(element => {
             request.body.companies.forEach(element2 => {
-                if (element == element2){
+                if (element == element2) {
                     contains = true
                 }
-            });
-        });  
-        if (contains)   return next()
-
+            })
+        })
+        if (contains) return next()
     }
 
     if (request.user.companies.includes(request.body.company)) {

@@ -7,8 +7,8 @@ export const EquipmentWithIdentificationModel = new mongoose.Schema(
     {
         description: {
             type: String,
-            required: 'Enter the description',
-            intl: true,
+            enum: ['COLMEIA', 'NUCLEO', 'ALÇA', 'CORTIÇO'],
+            default: 'APICULTOR',
         },
         identifier: {
             type: String,

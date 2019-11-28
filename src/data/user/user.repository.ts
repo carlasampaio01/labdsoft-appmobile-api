@@ -132,9 +132,7 @@ export default class UserRepository extends BaseRepository {
 
     public getFullUser = async (_id: string) => {
         try {
-            const user = await this._model
-                .findOne({ _id })
-                .populate({ path: 'role' })
+            const user = await this._model.findOne({ _id })
             if (!user) throw new Error('No User Found')
             return user
         } catch (error) {
@@ -144,9 +142,7 @@ export default class UserRepository extends BaseRepository {
 
     public getUserCredential = async (_id: string) => {
         try {
-            const user = await this._model
-                .findOne({ _id })
-                .populate({ path: 'role' })
+            const user = await this._model.findOne({ _id })
             if (!user) throw new Error('No User Found')
             return user
         } catch (error) {

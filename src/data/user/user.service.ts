@@ -2,7 +2,6 @@ import { IResponse, IRequest } from '../../interfaces/custom-express'
 import * as mongoose from 'mongoose'
 import BaseController from '../../infra/extensions/controller.extensions'
 import UserRepository from './user.repository'
-import RoleRepository from '../role/role.repository'
 import BaseService from '../../infra/extensions/service.extensions'
 import { userInfo } from 'os'
 

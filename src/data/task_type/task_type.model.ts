@@ -15,6 +15,18 @@ export const TaskTypeModel = new mongoose.Schema(
             ref: 'companies',
             required: true,
         },
+        equipments_with_identification: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'equipments_with_identification',
+            },
+        ],
+        equipments_without_identification: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'equipments_without_identification',
+            },
+        ],
     },
     {
         timestamps: true,

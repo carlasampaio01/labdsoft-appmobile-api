@@ -39,11 +39,13 @@ export const UserModel = new mongoose.Schema(
         recover_expiration: {
             type: Date,
         },
-        role: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'roles',
-            required: true,
-        },
+        role: [
+            {
+                type: String,
+                enum: ['ADMIN', 'MANAGER', 'APICULTOR'],
+                default: 'APICULTOR',
+            },
+        ],
         companies: [
             {
                 type: mongoose.Schema.Types.ObjectId,

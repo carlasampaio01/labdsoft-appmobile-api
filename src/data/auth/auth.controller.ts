@@ -1,6 +1,5 @@
 import { IResponse, IRequest } from '../../interfaces/custom-express'
 import UserRepository from './../user/user.repository'
-import RoleRepository from './../role/role.repository'
 
 export default class AuthController {
     private _repository: UserRepository
@@ -27,10 +26,8 @@ export default class AuthController {
 
     public register = async (request: IRequest, response: IResponse) => {
         try {
-            const repositoryRole = new RoleRepository()
-            const role = await repositoryRole.findById(request.body.role)
             if (
-                role.description != 'admin' &&
+                !request.body.role.includes('ADMIN') &&
                 request.body.companies.length > 1
             ) {
                 return response.error(
