@@ -19,7 +19,6 @@ export default abstract class BaseController {
     find = async (request: IRequest, response: IResponse) => {
         try {
             const result = await this._service.find()
-           
             return response.success(
                 result.filter(record =>
                     request.user.companies.includes(record.company)

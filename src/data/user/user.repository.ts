@@ -14,6 +14,7 @@ export default class UserRepository extends BaseRepository {
         super('users')
         const _new = new User()
         this.eventManager = EventManager.make()
+        this._with = [{ path: 'companies' }]
     }
 
     public register = async (body: any) => {
