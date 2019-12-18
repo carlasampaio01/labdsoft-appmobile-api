@@ -15,6 +15,11 @@ export const TaskTypeModel = new mongoose.Schema(
             ref: 'companies',
             required: true,
         },
+        type: {
+            type: String,
+            enum: ['SIMPLE', 'MULTIPLE'],
+            default: 'SIMPLE',
+        },
         equipments_with_identification: [
             {
                 type: mongoose.Schema.Types.ObjectId,

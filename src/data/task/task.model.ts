@@ -2,6 +2,9 @@ import * as mongoose from 'mongoose'
 import { Languages, Default } from '../../infra/extensions/languages.extensions'
 import * as mongooseIntl from 'mongoose-intl'
 import * as mongoose_delete from 'mongoose-delete'
+import UserRepository from '../user/user.repository'
+
+const userRepository = new UserRepository()
 
 export const TaskModel = new mongoose.Schema(
     {
@@ -31,6 +34,31 @@ export const TaskModel = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: 'companies',
             required: true,
+        },
+        users: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'users',
+                required: true,
+                validate: {
+                    async: true,
+                    validator: async function(v) {
+                        const user = await userRepository.findById(v)
+                        return user.role == 'APICULTOR'
+                    },
+                    message: `The user needs to have the role APICULTOR.`,
+                },
+            },
+        ],
+        state: [
+            {
+                type: String,
+                enum: ['PENDENTE', 'REALIZADA', 'ADIADA', 'CANCELADA'],
+                default: 'PENDENTE',
+            },
+        ],
+        motive: {
+            type: String,
         },
     },
     {
