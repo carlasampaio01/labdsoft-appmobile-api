@@ -3,8 +3,10 @@ import { Languages, Default } from '../../infra/extensions/languages.extensions'
 import * as mongooseIntl from 'mongoose-intl'
 import * as mongoose_delete from 'mongoose-delete'
 import UserRepository from '../user/user.repository'
+import TaskTypeRepository from '../task_type/task_type.repository'
 
 const userRepository = new UserRepository()
+const taskTypeRepository = new TaskTypeRepository()
 
 export const TaskModel = new mongoose.Schema(
     {
@@ -13,12 +15,18 @@ export const TaskModel = new mongoose.Schema(
             required: 'Enter the description',
             intl: true,
         },
-        date: { type: Date, default: Date.now },
         type: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'task_types',
             required: true,
         },
+        dates: [
+            { 
+                type: Date,
+                default: Date.now,
+                required: true
+            }
+        ],
         apiaries: [
             {
                 type: mongoose.Schema.Types.ObjectId,
@@ -26,10 +34,6 @@ export const TaskModel = new mongoose.Schema(
                 required: true,
             },
         ],
-        completed: {
-            type: Boolean,
-            default: false,
-        },
         company: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'companies',
@@ -59,6 +63,11 @@ export const TaskModel = new mongoose.Schema(
         ],
         motive: {
             type: String,
+        },
+        timestamps: {
+            type: Number,
+            required: 'Enter the time',
+            min: 1,
         },
     },
     {

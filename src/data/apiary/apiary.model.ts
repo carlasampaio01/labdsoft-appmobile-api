@@ -8,7 +8,6 @@ export const ApiaryModel = new mongoose.Schema(
         description: {
             type: String,
             required: 'Enter the description',
-            intl: true,
         },
         coordinates: {
             latitude: {

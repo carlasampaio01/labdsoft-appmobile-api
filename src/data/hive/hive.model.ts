@@ -30,12 +30,11 @@ export const HiveModel = new mongoose.Schema(
         info: {
                 type: String,
                 enum: ['DESDOBRAMENTO', 'COMPRA', 'CAPTURA', 'MUDANÇA'],
-                default: 'DESDOBRAMENTO',
+                default: 'COMPRA',
         },
         hive_original: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'hives',
-            required: 'Enter the original hive',
         },
         is_deleted: {
             type: Boolean,
@@ -43,8 +42,8 @@ export const HiveModel = new mongoose.Schema(
         },
         motive: {
             type: String,
-            enum: ['PILHAGEM', 'DOENÇA', 'VENDA'],
-            default: 'DOENÇA',
+            enum: ['NENHUM', 'PILHAGEM', 'DOENÇA', 'VENDA'],
+            default: 'NENHUM',
         },
     },
     {

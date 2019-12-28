@@ -311,6 +311,11 @@ export const RouteMakerApiary = (
         validations && validations.create ? validations.create : [],
         controller.create || UndefinedRoute
     )
+    router.post(
+        '/addhive/',
+        Authenticated(),
+        controller.addHive || UndefinedRoute
+    )
     router.put(
         '/:id',
         Authenticated(),
