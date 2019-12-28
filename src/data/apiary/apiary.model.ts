@@ -24,9 +24,34 @@ export const ApiaryModel = new mongoose.Schema(
         },
         hives: [
             {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'hives',
-                required: 'Enter the hive',
+                hive: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: 'hives',
+                    required: 'Enter the hive',
+                },
+                info:{
+                        type: String,
+                        enum: ['DESDOBRAMENTO', 'COMPRA', 'CAPTURA', 'MUDANÇA'],
+                        default: 'DESDOBRAMENTO',
+                },
+                hive_original: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: 'hives',
+                },
+                is_deleted: {
+                    type: Boolean,
+                    default: false,
+                },
+                motive: {
+                    type: String,
+                    enum: ['','PILHAGEM', 'DOENÇA', 'VENDA'],
+                    default: '',
+                },
+                desease: {
+                    type: String,
+                    enum: ['','Nosema', 'Varrose', 'Loque Europeia', 'Loque Americana', 'Ascosferiose'],
+                    default: '',
+                },
             },
         ],
         company: {

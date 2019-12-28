@@ -330,6 +330,11 @@ export const RouteMakerApiary = (
         validations && validations.remove ? validations.remove : [],
         controller.remove || UndefinedRoute
     )
+    router.post(
+        '/removehive/',
+        Authenticated(),
+        controller.removeHive || UndefinedRoute
+    )
     router.put(
         '/:id/recover',
         Authenticated(),

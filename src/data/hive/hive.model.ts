@@ -27,24 +27,6 @@ export const HiveModel = new mongoose.Schema(
             ref: 'companies',
             required: true,
         },
-        info: {
-                type: String,
-                enum: ['DESDOBRAMENTO', 'COMPRA', 'CAPTURA', 'MUDANÇA'],
-                default: 'COMPRA',
-        },
-        hive_original: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'hives',
-        },
-        is_deleted: {
-            type: Boolean,
-            default: false,
-        },
-        motive: {
-            type: String,
-            enum: ['NENHUM', 'PILHAGEM', 'DOENÇA', 'VENDA'],
-            default: 'NENHUM',
-        },
     },
     {
         timestamps: true,
