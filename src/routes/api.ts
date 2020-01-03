@@ -11,6 +11,7 @@ import CompanyRoutes from './../data/company/company.routes'
 import TaskTypesRoutes from './../data/task_type/task_type.routes'
 import EquipmentsWithIdentificationRoutes from '../data/equipment_with_identification/equipment_with_identification.routes'
 import EquipmentsWithoutIdentificationRoutes from '../data/equipment_without_identification/equipment_without_identification.routes'
+import VisitRoutes from './../data/visit/visit.routes'
 
 const router = Router()
 
@@ -30,5 +31,6 @@ router.use(
     '/equipments_without_identification',
     EquipmentsWithoutIdentificationRoutes
 )
+router.use('/visits', VisitRoutes)
 
 export default router

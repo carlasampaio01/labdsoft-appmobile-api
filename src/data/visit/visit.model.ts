@@ -2,13 +2,8 @@ import * as mongoose from 'mongoose'
 import { Languages, Default } from '../../infra/extensions/languages.extensions'
 import * as mongooseIntl from 'mongoose-intl'
 import * as mongoose_delete from 'mongoose-delete'
-import UserRepository from '../user/user.repository'
-import TaskTypeRepository from '../task_type/task_type.repository'
 
-const userRepository = new UserRepository()
-const taskTypeRepository = new TaskTypeRepository()
-
-export const TaskModel = new mongoose.Schema(
+export const VisitModel = new mongoose.Schema(
     {
         description: {
             type: String,
@@ -39,21 +34,6 @@ export const TaskModel = new mongoose.Schema(
             ref: 'companies',
             required: true,
         },
-        users: [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'users',
-                required: true,
-                validate: {
-                    async: true,
-                    validator: async function(v) {
-                        const user = await userRepository.findById(v)
-                        return user.role == 'APICULTOR' || user.role == 'ADMIN'
-                    },
-                    message: `The user needs to have the role APICULTOR or ADMIN.`,
-                },
-            },
-        ],
         state: [
             {
                 type: String,
@@ -64,7 +44,7 @@ export const TaskModel = new mongoose.Schema(
         motive: {
             type: String,
         },
-        time: {
+        timestamps: {
             type: Number,
             required: 'Enter the time',
             min: 1,
@@ -77,15 +57,15 @@ export const TaskModel = new mongoose.Schema(
     }
 )
 
-TaskModel.plugin(mongoose_delete, {
+VisitModel.plugin(mongoose_delete, {
     deletedAt: true,
     deletedBy: true,
     overrideMethods: true,
 })
-TaskModel.plugin(mongooseIntl, {
+VisitModel.plugin(mongooseIntl, {
     languages: Languages,
     defaultLanguage: Default,
     virtualObject: true,
 })
 
-export const Task = mongoose.model('tasks', TaskModel)
+export const Visit = mongoose.model('visits', VisitModel)

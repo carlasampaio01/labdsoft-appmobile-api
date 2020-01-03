@@ -228,6 +228,64 @@ const RouteMaker = (router: Router, controller: any, validations?: any) => {
     )
 }
 
+export const RouteMakerHive = (
+    router: Router,
+    controller: any,
+    validations?: any
+) => {
+    router.get(
+        '/',
+        Authenticated(),
+        validations && validations.find ? validations.find : [],
+        controller.find || UndefinedRoute
+    )
+    router.get(
+        '/:id',
+        Authenticated(),
+        validations && validations.get ? validations.get : [],
+        controller.get || UndefinedRoute
+    )
+    router.get(
+        '/:page/:limit',
+        Authenticated(),
+        validations && validations.paginate ? validations.paginate : [],
+        controller.paginate || UndefinedRoute
+    )
+    router.post(
+        '/',
+        Authenticated(),
+        ownsCompany(),
+        validations && validations.create ? validations.create : [],
+        controller.create || UndefinedRoute
+    )
+    router.post(
+        '/colocar_alca',
+        Authenticated(),
+        controller.colocarAlca || UndefinedRoute
+    )
+    router.put(
+        '/:id',
+        Authenticated(),
+        ownsCompany(),
+        validations && validations.edit ? validations.edit : [],
+        controller.edit || UndefinedRoute
+    )
+    router.delete(
+        '/:id',
+        Authenticated(),
+        ownsCompany(),
+        validations && validations.remove ? validations.remove : [],
+        controller.remove || UndefinedRoute
+    )
+    router.put(
+        '/:id/recover',
+        Authenticated(),
+        ownsCompany(),
+        validations && validations.recover ? validations.recover : [],
+        controller.recover || UndefinedRoute
+    )
+}
+
 export const RouteMakerEquipmentsWithIdentification = (
     router: Router,
     controller: any,
@@ -341,6 +399,19 @@ export const RouteMakerApiary = (
         ownsCompany(),
         validations && validations.recover ? validations.recover : [],
         controller.recover || UndefinedRoute
+    )
+}
+
+export const RouteMakerVisit = (
+    router: Router,
+    controller: any,
+    validations?: any
+) => {
+    router.post(
+        '/',
+        Authenticated(),
+        validations && validations.find ? validations.find : [],
+        controller.generateVisit || UndefinedRoute
     )
 }
 
